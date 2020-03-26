@@ -1,0 +1,92 @@
+﻿@page
+@model VirtualSchool.Pages.AdminModel
+@using VirtualSchool.Models;
+@inject VirtualSchool.Services.DiaryService dairyService
+@{
+    ViewData["Title"] = "Админ";
+}
+
+
+<link rel="stylesheet" href="~/css/admin.css" />
+
+<h1>Администрирование</h1>
+<div id="container">
+    <div id="tabs">
+        <button id="requestBtn"><b>Заявки</b></button>
+        <button id="timetableBtn"><b>Расписание</b></button>
+        <button id="newsBtn"><b>Новости</b></button>
+    </div>
+    <div id="tab">
+        <div id="requestTab">
+            <h2>Запросы на регистрацию</h2>
+            @if (Model.NonVerifiedUsers != null)
+            {
+                @foreach (User user in Model.NonVerifiedUsers)
+                {
+                    <div userId="@user.UserId" class="request">
+                        <div>
+                            <b>@user.Class.ClassNumber @user.Class.ClassChar - @user.FirstName @user.LastName</b>
+                        </div>
+                        <div class="choice">
+                            <button userId="@user.UserId" class="request_accept">Принять</button>
+                            <button userId="@user.UserId" class="request_deny">Отклонить</button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <div id="timetableTab">
+            <h2>Изменение расписания</h2>
+            <div id="week">
+                @if (Model.Week != null)
+                {
+                    @foreach (Day day in Model.Week)
+                    {
+                        @dairyService.NewDay();
+                        <div class="day">
+                            <div class="dayName">@day.Date.ToShortDateString()  @dairyService[day.Date.DayOfWeek] </div>
+
+                            @foreach (DayObject obj in day.DayObjects)
+                            {
+                                <div class="obj">@dairyService.NextObj() - @obj.Object.ObjectName</div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+            <form id="timetable_change" method="post">
+                <select asp-for="NewDay.DayNumber">
+                    <option value="1">Понедельник</option>
+                    <option value="2">Вторник</option>
+                    <option value="3">Среда</option>
+                    <option value="4">Четверг</option>
+                    <option value="5">Пятница</option>
+                    <option value="6">Суббота</option>
+                </select><span class="error" asp-validation-for="NewDay.DayNumber"></span><br />
+                @Html.DropDownList("NewDay.FirstObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.SecondObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.ThirdObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.FourthObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.FifthObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.SixthObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.SeventhObj", Model.Objects) <br />
+                @Html.DropDownList("NewDay.EighthObj", Model.Objects)
+                <input type="submit" value="Добавить/Изменить" />
+            </form>
+        </div>
+
+        <div id="newsTab">
+            <h2>Публикация новостей</h2>
+            <input id="news_header" placeholder="Заголовок" maxlength="28" /><br />
+            <textarea id="news_body" placeholder="Новость" maxlength="500" cols="30"></textarea><br />
+            <button id="news_add">Опубликовать</button> <span id="news_add_info"></span>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/admin.js"></script>
+}

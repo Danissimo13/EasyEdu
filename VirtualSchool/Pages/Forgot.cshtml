@@ -1,0 +1,28 @@
+﻿@page
+@model VirtualSchool.Pages.ForgotModel
+@{
+    ViewData["Title"] = "Forgot";
+}
+
+<link rel="stylesheet" href="~/css/forgot.css" />
+
+<h1>Забыли пароль</h1>
+
+<form id="email_form">
+    <h2>Подтверждение Email</h2>
+    <input id="input_email" type="email" placeholder="Email"/> <br />
+    <input id="send_email" type="submit" value="Отправить" />
+</form>
+
+<form id="confirm_form" method="post">
+    <h2>Код подтверждения</h2>
+    <input id="user_email" asp-for="Email" />
+    <input id="input_code" placeholder="Код"/> <br />
+    <input id="send_code" type="submit" value="Подтвердить" />
+</form>
+
+@section Scripts{
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/forgot.js" asp-append-version="true"></script>
+}
+

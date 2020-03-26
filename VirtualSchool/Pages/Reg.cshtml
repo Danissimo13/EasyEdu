@@ -1,0 +1,62 @@
+﻿@page
+@model VirtualSchool.Pages.RegModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/auth.css" />
+<style>
+    span{
+        color : red;
+    }
+</style>
+
+
+<body>
+    <form method="post">
+        <div id="registr">
+            <h1>Регистрация</h1>
+            <div class="input-form">
+                <span asp-validation-for="RegData.Email"></span>
+                <input asp-for="RegData.Email" placeholder="Email" maxlength="40"><br />
+            </div>
+            <div class="input-form">
+                <input asp-for="RegData.FirstName" placeholder="Имя" maxlength="20"><br />
+                <span asp-validation-for="RegData.FirstName"></span>
+            </div>
+            <div class="input-form">
+                <input asp-for="RegData.LastName" placeholder="Фамилия" maxlength="20"><br />
+                <span asp-validation-for="RegData.LastName"></span>
+            </div>
+            <div class="input-form">
+                <input asp-for="RegData.SchoolNumber" placeholder="Номер школы"><br />
+                <span asp-validation-for="RegData.SchoolNumber"></span>
+            </div>
+            <div class="input-form">
+                <input asp-for="RegData.ClassNumber" placeholder="Класс" maxlength="2"><br />
+                <span asp-validation-for="RegData.ClassNumber"></span>
+            </div>
+            <div class="input-form">
+                <input asp-for="RegData.ClassChar" placeholder="Буква класса" maxlength="1"><br />
+                <span asp-validation-for="RegData.ClassChar"></span>
+            </div>
+            <div class="input-form">
+                <input asp-for="RegData.Password" type="password" placeholder="Пароль" minlength="8" maxlength="20" id="pass">
+            </div>
+            <div class="input-form">
+                <input type="password" placeholder="Подтвердите пароль" minlength="8" maxlength="20" id="repPass">
+            </div>
+
+            <div class="input-form">
+                <input type="submit" id="regis" value="Зарегистрироваться">
+            </div>
+
+        </div>
+    </form>
+</body>
+
+@section Scripts{ 
+<script src="~/js/auth.js"></script>
+}
+
+

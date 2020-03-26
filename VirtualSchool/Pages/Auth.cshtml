@@ -1,0 +1,32 @@
+﻿@page
+@model VirtualSchool.Pages.AuthModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<link rel="stylesheet" type="text/css" href="~/css/auth.css">
+
+<body>
+    <form method="post">
+        <div class="form">
+            <h1>Вход</h1>
+            <div class="input-form">
+                <input asp-for="AuthData.Email" type="email" placeholder="Email" maxlength="40">
+            </div>
+            <div class="input-form">
+                <input asp-for="AuthData.Password" type="password" placeholder="Пароль" minlength="8" maxlength="20">
+            </div>
+            <div class="input-form">
+                <input type="submit" id="go" value="Войти">
+            </div>
+            <div class="input-form">
+                <input type="submit" asp-action="Reg" id="reg" value="Регистрация">
+            </div>
+            <a class="forget" asp-page="Forgot">Забыли пароль?</a>
+        </div>
+    </form>
+</body>
+
+@section Scripts{
+    <script src="~/js/auth.js"></script>
+}

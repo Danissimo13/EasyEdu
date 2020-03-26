@@ -1,0 +1,56 @@
+﻿h1 {
+    color: #8f53ff;
+}
+
+#noDiary {
+    color: orangered;
+    text-align: center;
+}
+
+#diary {
+    border: 2px solid #6b0cf6;
+    display: grid;
+    grid-template-columns: 220px 220px;
+    grid-row: 3;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    padding: 10px;
+    width: 470px;
+}
+
+.dayName {
+    text-align: center;
+    font-weight: bold;
+}
+
+.day {
+    width: 210px;
+    border: 2px solid #6b0cf6;
+}
+
+.obj {
+    padding-left: 5px;
+    width: 200px;
+    height: 30px;
+    border: 1px solid #6b0cf6;
+    margin: 2px auto;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    #diary {
+        display: grid;
+        grid-template-columns: 220px;
+        grid-row: 6;
+        grid-row-gap: 10px;
+        padding: 10px;
+        width: 250px;
+    }
+
+    .day{
+        margin : 0 auto;
+    }
+}

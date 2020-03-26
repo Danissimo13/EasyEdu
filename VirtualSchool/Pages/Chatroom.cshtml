@@ -1,0 +1,40 @@
+﻿@page
+@model VirtualSchool.Pages.ChatroomModel
+@using VirtualSchool.Models;
+@{
+    ViewData["Title"] = "Чат";
+}
+
+<link rel="stylesheet" href="~/css/chat.css" />
+
+<h1>Школьный чат</h1>
+<div class="chatbox">
+    <div id="chatlogs">
+        @foreach (Message message in Model.Messages)
+        {
+            @if (message.AuthorId.ToString() == User.Identity.Name)
+            {
+                <div class="chat self">
+                    <p class="chat-message"><b>@message.Author.FirstName @message.Author.LastName:</b> @message.Text</p>
+                </div>
+            }
+            else
+            {
+                <div class="chat friend">
+                    <p class="chat-message"><b>@message.Author.FirstName @message.Author.LastName:</b> @message.Text</p>
+                </div>
+            }
+
+        }
+    </div>
+
+    <div class="chat-form">
+        <textarea id="input"></textarea>
+        <button id="send">Отправить</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/chat.js"></script>
+}

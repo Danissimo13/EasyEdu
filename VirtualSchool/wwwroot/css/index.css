@@ -1,0 +1,66 @@
+﻿#reference {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 200px 200px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    width: 640px;
+    height: 420px;
+    margin: 0 auto;
+}
+
+#reference a {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 2px solid #5009ff;
+    color: black;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#reference a:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+#reference a img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    transition: all 1s;
+}
+
+#reference a:hover img {
+    width: 125px;
+    height: 125px;
+}
+
+@media (max-width: 768px) {
+    #reference {
+        display: grid;
+        width: 320px;
+        height: 250px;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 120px 120px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        font-size: 12px;
+    }
+
+    #reference a{
+        width : 100px;
+        height : 120px;
+    }
+
+    #reference a img{
+        width : 80px;
+        height : 80px;
+    }
+
+     #reference a:hover img {
+        width: 60px;
+        height: 60px;
+    }
+}

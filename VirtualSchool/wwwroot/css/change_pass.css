@@ -1,0 +1,26 @@
+﻿h1 {
+    color: #8f53ff;
+}
+
+input {
+    border: 2px solid #6e00fa;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#newPass, #verPass {
+    width: 250px;
+    padding-left: 5px;
+}
+
+#changePass {
+    display: block;
+    background-color: white;
+    width: 150px;
+    margin: 10px auto;
+}
+
+#changeForm {
+    margin: 0 auto;
+    width: 250px;
+}

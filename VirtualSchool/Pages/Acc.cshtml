@@ -1,0 +1,48 @@
+﻿@page "{Id:int?}"
+@model VirtualSchool.Pages.AccModel
+@{
+    ViewData["Title"] = "Acc";
+}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Thambi">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/css/personal.css" />
+
+<div class="wrapper card">
+    <div class="cover">
+        <img class="user-pic" src="~/img/personal-user.png"/>
+    </div>
+
+    <div class="content">
+        <h4>@Model.Profile.FirstName @Model.Profile.LastName</h4>
+        <h5>Школа №@Model.Profile.Class.School.SchoolNumber</h5>
+        <br>
+        @if (User.Identity.Name == Model.Profile.UserId.ToString())
+        {
+            <a class="btnTheme" asp-page="NewPass">Сменить пароль</a>
+            <form method="post">
+                <input class="btnTheme" type="submit" id="exit_btn" asp-page-handler="Exit" value="Выйти" />
+            </form>
+        }
+        else
+        {
+            <a class="btnTheme" asp-page="" asp-route-id="@Model.Id">Написать</a>
+        }
+        </div>
+
+    <div class="hidden-content">
+        <br>
+        <h2>Информация</h2>
+        <br>
+        <p>Имя <br> @Model.Profile.FirstName</p>
+        <p>Фамилия <br> @Model.Profile.LastName</p>
+        <p>Школа <br> №@Model.Profile.Class.School.SchoolNumber</p>
+        <p>Класс <br> @Model.Profile.Class.ClassNumber @Model.Profile.Class.ClassChar</p>
+        <p>Email <br> @Model.Profile.Email</p>
+        <i class="fa fa-angle-down bottomBtn"></i>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/personal.js" asp-append-version="true"></script>
+}

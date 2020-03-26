@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+}
+
+<link rel="stylesheet" href="~/css/index.css" />
+
+<div class="text-center">
+    <h1 class="display-4">Добро пожаловать</h1>
+    <div id="reference">
+        <a asp-page="Auth">
+            <img src="~/img/login.jpg" />
+            <b>Авторизация</b>
+        </a>
+        <a asp-page="Diary">
+            <img src="~/img/diary.jpg" />
+            <b>Расписание</b>
+        </a>
+        <a asp-page="Acc">
+            <img src="~/img/account.jpg" />
+            <b>Аккаунт</b>
+        </a>
+        <a asp-page="Chatroom">
+            <img src="~/img/chat.jpg" />
+            <b>Чат</b>
+        </a>
+        <a asp-page="News">
+            <img src="~/img/news.jpg" />
+            <b>Новости</b>
+        </a>
+        @if (User.IsInRole("admin"))
+        {
+            <a asp-page="Admin">
+                <img src="~/img/admin.jpg" />
+                <b>Управление</b>
+            </a>
+        }
+    </div>
+</div>

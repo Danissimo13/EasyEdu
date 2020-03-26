@@ -1,0 +1,37 @@
+﻿@page
+@model VirtualSchool.Pages.DiaryModel
+@using VirtualSchool.Models;
+@inject VirtualSchool.Services.DiaryService diaryService
+@{
+    ViewData["Title"] = "Дневник";
+}
+
+<link rel="stylesheet" href="~/css/diary.css" />
+
+<h1>Расписание на текущую неделю</h1>
+@if (Model.Days.Any())
+{
+    <div id="diary">
+
+        @foreach (Day day in Model.Days)
+        {
+            @diaryService.NewDay();
+            <div class="day">
+                <div class="dayName">@day.Date.ToShortDateString()  @diaryService[day.Date.DayOfWeek]</div>
+
+                @foreach (DayObject obj in day.DayObjects)
+                {
+                    <div class="obj">@diaryService.NextObj() - @obj.Object.ObjectName</div>
+                }
+            </div>
+        }
+
+    </div>
+}
+else
+{
+    <h2 id="noDiary">
+        Расписание не составлено.<br />
+        Уведомите об этом представителя вашей школы
+    </h2>
+}

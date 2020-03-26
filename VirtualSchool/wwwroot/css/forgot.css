@@ -1,0 +1,51 @@
+﻿h1 {
+    color: #6e00fa;
+}
+
+h2 {
+    text-align: center;
+    color: gray;
+}
+
+#confirm_form {
+    display: none;
+}
+
+#user_email {
+    display: none;
+}
+
+#email_form, #confirm_form {
+    width: 340px;
+    margin: 0 auto;
+    border: 2px solid #6e00fa;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+input {
+    padding-left: 5px;
+    height: 50px;
+    width: 300px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    background-color: white;
+}
+
+input[type=submit] {
+    color: gray;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #6e00fa;
+    border-radius: 20px;
+    transition: all .3s;
+}
+
+input[type=submit]:hover {
+    background-color: #6e00fa;
+    color: white;
+}
+
+input[type=submit]:focus {
+    outline: none;
+}

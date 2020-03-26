@@ -1,0 +1,38 @@
+﻿@page
+@model VirtualSchool.Pages.NewsModel
+@using VirtualSchool.Models;
+@{
+    ViewData["Title"] = "Новости";
+}
+
+<link rel="stylesheet" href="~/css/news.css" />
+
+
+<h1>Новости</h1>
+
+<div class="blogs">
+    <div class="container">
+        <div class="row">
+            @foreach (News news in Model.News)
+            {
+                <div class="col-sm-12 col-md-4">
+                    <div class="post">
+                        <div class="img-wrapper">
+                            <img src="~/img/news_image.jpg" alt="" srcset="">
+                        </div>
+                        <div class="content-wrapper">
+                            <h3 class="title">@news.Head</h3>
+                        </div>
+                        <div class="comments-readmore">
+                            <a class="readmore" asp-page="NewsPage" asp-route-id="@news.NewsId">
+                                <div class="dot dot1"></div>
+                                <div class="dot dot2"></div>
+                                <div class="dot dot3"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@page
+@model VirtualSchool.Pages.NewPassModel
+@{
+    ViewData["Title"] = "Смена Пароля";
+}
+
+<link rel="stylesheet" href="~/css/change_pass.css" />
+
+<style>
+    h1 {
+        color: gray;
+        text-align : center;
+    }
+
+    input {
+        margin-top: 10px;
+        font-size: 20px;
+        width: 250px;
+        height : 50px;
+    }
+
+    #newPass, #verPass {
+        padding-left: 5px;
+        border : 1px solid gray;
+    }
+
+    #changePass {
+        font-weight : bold;
+        font-size : 20px;
+        display: block;
+        background-color: white;
+        border-radius : 20px;
+        width : 250px;
+        color : gray;
+        transition : all .3s;
+    }
+
+    #changePass:hover {
+        background-color: #6e00fa;
+        color : white;
+    }
+
+    #changePass:focus{
+        outline : none;
+    }
+
+    #change_form{
+        width : 300px;
+        padding : 5px 25px 5px 25px;
+        border : 2px solid #6e00fa;
+        border-radius : 20px;
+        margin: 0 auto;
+        width: 300px;
+    }
+</style>
+
+<div id="change_form">
+    <h1>Изменение пароля</h1>
+    <form method="post">
+        <input id="newPass" type="password" asp-for="NewPass" placeholder="Новый пароль" /><br />
+        <input id="verPass" type="password" placeholder="Подтвердите пароль" />
+        <input id="changePass" type="submit" value="Изменить" />
+    </form>
+</div>
+
+@section Scripts{
+    <script src="~/js/change_pass.js" asp-append-version="true"></script>
+}
+

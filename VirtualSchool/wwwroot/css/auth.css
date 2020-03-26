@@ -1,0 +1,143 @@
+﻿.form {
+    margin: 50px auto;
+    width: 420px;
+    background: white;
+    border: 2px solid #6e00fa;
+    border-radius: 20px;
+}
+
+#registr {
+    margin: 0px auto;
+    width: 420px;
+    background: white;
+    border: 2px solid #6e00fa;
+    border-radius: 20px;
+}
+
+.form h1, #registr h1 {
+  margin: 20px 100px;
+  padding: 0;
+  text-align: center;
+  font-size: 30px;
+  color: gray;
+  text-transform: uppercase;
+}
+
+.input-form {
+  margin: 15px 40px;
+  text-align: center;
+}
+
+.input-form input {
+  padding: 10px;
+  width: 100%;
+  color: #647374;
+  font-size: 20px;
+  background: #EAF9F9;
+  border: 1px solid #7E8D8E;
+  box-sizing: border-box;
+}
+
+.input-form input[id="go"] {
+  border-radius: 15px;
+  color: #647374;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid #6e00fa;
+  background: white;
+  transition: .3s;
+}
+
+.input-form input[id="reg"] {
+    border-radius: 15px;
+    margin-top: 0px;
+    color: #647374;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #6e00fa;
+    background: white;
+    transition: .3s;
+}
+.input-form input[type="submit"]:focus {
+  outline: none;
+}
+
+.input-form input[type="submit"]:hover {
+  background: #6e00fa;
+  color: #fff;
+}
+  
+.form a {
+  display: block;
+  padding: 0 0 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: .3s;
+  color: #647374;
+}
+
+.form a:hover {
+  color: #0366DD;
+}
+
+#regis {
+    border-radius: 15px;
+    color: #647374;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid #6e00fa;
+    background: white;
+    transition: .3s;
+}
+
+#regis:hover {
+    background: #6e00fa;
+    color: #fff;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}

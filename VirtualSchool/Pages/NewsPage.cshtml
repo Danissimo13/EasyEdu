@@ -1,0 +1,16 @@
+﻿@page "{Id:int?}"
+@model VirtualSchool.Pages.NewsPageModel
+@{
+    ViewData["Title"] = "NewsPage";
+}
+
+<link rel="stylesheet" href="~/css/news_page.css"/>
+
+<h1>@Model.News.Head</h1>
+<div id="news_body">
+    @Model.News.Body
+    <div id="news_date">
+        @Model.News.School.SchoolNumber школа - @Model.News.Date.ToShortDateString()
+    </div>
+</div>
+
