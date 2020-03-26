@@ -71,7 +71,8 @@ namespace VirtualSchool
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapHub<SchoolChatHub>("/schoolChatHub");
+                endpoints.MapHub<PersonalChatHub>("/personalChatHub");
                 endpoints.MapHub<AdminHub>("/adminhub");
                 endpoints.MapHub<RecoverHub>("/recoverHub");
             });
