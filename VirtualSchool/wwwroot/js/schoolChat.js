@@ -1,6 +1,6 @@
 ﻿$(function () {
     const hub = new signalR.HubConnectionBuilder()
-        .withUrl("/chatHub")
+        .withUrl("/schoolChatHub")
         .build();
 
     let userName = '';

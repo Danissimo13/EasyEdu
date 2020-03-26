@@ -7,12 +7,12 @@ using VirtualSchool.Models;
 
 namespace VirtualSchool.Hubs
 {
-    public class ChatHub : Hub
+    public class SchoolChatHub : Hub
     {
         private VSContext _db;
         private User user;
 
-        public ChatHub(VSContext db)
+        public SchoolChatHub(VSContext db)
         {
             _db = db;
         }
@@ -27,7 +27,6 @@ namespace VirtualSchool.Hubs
 
             string name = user.FirstName + " " + user.LastName + ":";
             await Clients.Caller.SendAsync("Enter", name, groupName);
-  
         }
 
         public async Task Message(string userName,string message, string groupName)
