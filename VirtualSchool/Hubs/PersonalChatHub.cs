@@ -18,13 +18,14 @@ namespace VirtualSchool.Hubs
 
         public async Task Enter()
         {
-            await Clients.Caller.SendAsync(Context.UserIdentifier);
+            await Clients.Caller.SendAsync("Enter", Context.UserIdentifier);
         }
 
         public async Task Send(string toId, string message)
         {
             await Clients.Caller.SendAsync("Message", message);
             await Clients.User(toId).SendAsync("Message", message);
+
             await db.PMessages.AddAsync(new PMessage()
             {
                 AuthorId = int.Parse(Context.UserIdentifier),
