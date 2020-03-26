@@ -1,12 +1,35 @@
 ﻿@page
-@model VirtualSchool.Pages.PmModel
+@model VirtualSchool.Pages.PersonalChatModel
+@using VirtualSchool.Models
 @{
     ViewData["Title"] = "Pm";
 }
 
-<style>
+<link rel="stylesheet" href="~/css/personalChat.css"/>
 
-</style>
+<h1>Личная переписка с @Model.Companion.FirstName @Model.Companion.LastName</h1>
+<div class="chatbox">
+    <div id="chatlogs">
+        @foreach (Message message in Model.Messages)
+        {
+            @if (message.AuthorId.ToString() == User.Identity.Name)
+            {
+                <div class="chat self">
+                    <p class="chat-message"><b>@message.Author.FirstName @message.Author.LastName:</b> @message.Text</p>
+                </div>
+            }
+            else
+            {
+                <div class="chat friend">
+                    <p class="chat-message"><b>@message.Author.FirstName @message.Author.LastName:</b> @message.Text</p>
+                </div>
+            }
 
-<h1>Личная переписка с </h1>
+        }
+    </div>
 
+    <div class="chat-form">
+        <textarea id="input"></textarea>
+        <button id="send">Отправить</button>
+    </div>
+</div>
