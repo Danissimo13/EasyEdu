@@ -12,6 +12,7 @@ namespace VirtualSchool.Models
         public DbSet<Class> Classes { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<PMessage> PMessages { get; set; }
         public DbSet<Object> Objects { get; set; }
         public DbSet<Day> Days { get; set; }
         public DbSet<DayObject> DayObjects { get; set; }
@@ -95,7 +96,6 @@ namespace VirtualSchool.Models
 
             modelBuilder.Entity<User>().HasOne(u => u.Role).WithMany(r => r.Users).HasForeignKey(u => u.RoleId);
             modelBuilder.Entity<User>().HasOne(u => u.Class).WithMany(c => c.Students).HasForeignKey(u => u.ClassId);
-            modelBuilder.Entity<User>().HasMany(u => u.Messages).WithOne(m => m.Author).HasForeignKey(m => m.AuthorId);
 
             modelBuilder.Entity<School>().HasMany(s => s.News).WithOne(n => n.School).HasForeignKey(n => n.SchoolId);
             modelBuilder.Entity<School>().HasMany(s => s.Classes).WithOne(c => c.School).HasForeignKey(c => c.SchoolId);
@@ -105,7 +105,5 @@ namespace VirtualSchool.Models
             modelBuilder.Entity<DayObject>().HasOne(o => o.Day).WithMany(d => d.DayObjects).HasForeignKey(o => o.DayId);
             modelBuilder.Entity<DayObject>().HasOne(o => o.Object).WithMany(o => o.DayObjects).HasForeignKey(o => o.ObjectId);
         }
-
-
     }
 }
