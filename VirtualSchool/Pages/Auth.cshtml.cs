@@ -57,7 +57,7 @@ namespace VirtualSchool.Pages
                 if (user.Password == hashService.GetHash(AuthData.Password))
                 {
                     await Authenticate(user);
-                    return RedirectToPage("Chatroom");
+                    return RedirectToPage("Acc");
                 }
                 else
                 {
