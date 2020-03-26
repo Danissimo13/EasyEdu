@@ -19,17 +19,10 @@ namespace VirtualSchool.Models
 
         public bool IsVerified { get; set; }
 
-        public List<Message> Messages { get; set; }
-
         public Class Class { get; set; }
         public int ClassId { get; set; }
 
         public Role Role { get; set; }
         public int RoleId { get; set; }
-
-        public User()
-        {
-            Messages = new List<Message>();
-        }
     }
 }
