@@ -9,18 +9,18 @@ namespace VirtualSchool.Hubs
 {
     public class SchoolChatHub : Hub
     {
-        private VSContext _db;
+        private VSContext db;
         private User user;
 
-        public SchoolChatHub(VSContext db)
+        public SchoolChatHub(VSContext context)
         {
-            _db = db;
+            db = context;
         }
 
         public async Task Enter()
         {
-            user = _db.Users.Include(u => u.Class).Where(u => (u.UserId.ToString() == Context.User.Identity.Name)).FirstOrDefault();
-            await _db.Schools.LoadAsync();
+            user = db.Users.Include(u => u.Class).Where(u => (u.UserId.ToString() == Context.User.Identity.Name)).FirstOrDefault();
+            await db.Schools.LoadAsync();
 
             string groupName = "group" + user?.Class.School.SchoolNumber.ToString();
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
@@ -32,12 +32,12 @@ namespace VirtualSchool.Hubs
         public async Task Message(string userName,string message, string groupName)
         {
             await Clients.Group(groupName).SendAsync("Message", userName, message);
-            _db.Messages.Add(new Message()
+            db.Messages.Add(new Message()
             {
                 AuthorId = int.Parse(Context.User.Identity.Name),
                 Text = message
             });
-            _db.SaveChanges();
+            db.SaveChanges();
         }
 
     }

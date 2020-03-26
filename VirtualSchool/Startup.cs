@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,6 +41,7 @@ namespace VirtualSchool
                 });
             services.AddSignalR();
             services.AddDbContext<VSContext>(options => options.UseSqlServer(connectionDb));
+            services.AddTransient<IUserIdProvider, HubUserIdService>();
             services.AddTransient<DiaryService>();
             services.AddTransient<UserService>();
             services.AddTransient<CodeService>();

@@ -97,6 +97,8 @@ namespace VirtualSchool.Models
             modelBuilder.Entity<User>().HasOne(u => u.Role).WithMany(r => r.Users).HasForeignKey(u => u.RoleId);
             modelBuilder.Entity<User>().HasOne(u => u.Class).WithMany(c => c.Students).HasForeignKey(u => u.ClassId);
 
+            modelBuilder.Entity<Message>().HasOne(m => m.Author).WithMany().HasForeignKey(m => m.AuthorId);
+
             modelBuilder.Entity<School>().HasMany(s => s.News).WithOne(n => n.School).HasForeignKey(n => n.SchoolId);
             modelBuilder.Entity<School>().HasMany(s => s.Classes).WithOne(c => c.School).HasForeignKey(c => c.SchoolId);
 

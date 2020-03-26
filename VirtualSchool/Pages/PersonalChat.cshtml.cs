@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,12 +12,14 @@ using VirtualSchool.Services;
 
 namespace VirtualSchool.Pages
 {
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     public class PersonalChatModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
         public int? Id { get; set; }
 
         public User Companion { get; set; } //С кем идёт переписка
+        public User ThisUser { get; set; } //Кто переписывается
         public List<PMessage> Messages { get; set; }
 
         private VSContext db;
@@ -35,6 +39,7 @@ namespace VirtualSchool.Pages
             }
 
             Companion = await userService.GetUserAsync(Id.Value);
+            ThisUser = await userService.GetUserAsync(int.Parse(User.Identity.Name));
 
             if(Companion == null)
             {
