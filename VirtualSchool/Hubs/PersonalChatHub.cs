@@ -18,18 +18,21 @@ namespace VirtualSchool.Hubs
 
         public async Task Enter()
         {
-            await Clients.Caller.SendAsync("Enter", Context.UserIdentifier);
+            User user = db.Users.FirstOrDefault(u => u.UserId.ToString() == Context.UserIdentifier);
+            string userName = user.FirstName + " " + user.LastName;
+            await Clients.Caller.SendAsync("Enter", userName, user.UserId);
         }
 
-        public async Task Send(string toId, string message)
+        public async Task Message(string toId, string message, string name)
         {
-            await Clients.Caller.SendAsync("Message", message);
-            await Clients.User(toId).SendAsync("Message", message);
+            await Clients.Caller.SendAsync("Message", message, name, Context.UserIdentifier);
+            await Clients.User(toId).SendAsync("Message", message, name, Context.UserIdentifier);
 
             await db.PMessages.AddAsync(new PMessage()
             {
                 AuthorId = int.Parse(Context.UserIdentifier),
-                RecipientId = int.Parse(toId)
+                RecipientId = int.Parse(toId),
+                Text = message
             });
             await db.SaveChangesAsync();
         }
