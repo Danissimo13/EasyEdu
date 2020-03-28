@@ -29,7 +29,13 @@
     </div>
 
     <div class="chat-form">
+        <input id="toId" value="@Model.Companion.UserId" hidden/>
         <textarea id="input"></textarea>
         <button id="send">Отправить</button>
     </div>
 </div>
+
+@section Scripts{ 
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/personalChat.js" asp-append-version="true"></script>
+}
