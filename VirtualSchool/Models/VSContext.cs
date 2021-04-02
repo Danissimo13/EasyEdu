@@ -66,13 +66,6 @@ namespace VirtualSchool.Models
                     School = school,
                 };
 
-                Day one = new Day()
-                {
-                    Class = _class,
-                    DayNumber = 6,
-                    Date = DateTime.Today,
-                };
-
                 Schools.Add(school);
                 Classes.Add(_class);
 
@@ -81,9 +74,7 @@ namespace VirtualSchool.Models
                 Objects.Add(physic);
                 Objects.Add(math);
                 Objects.Add(russ);
-                
-                Days.Add(one);
-
+  
                 Roles.Add(student);
                 Roles.Add(admin);
                 SaveChanges();

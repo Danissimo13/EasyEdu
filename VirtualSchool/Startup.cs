@@ -30,8 +30,6 @@ namespace VirtualSchool
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionDb = "Server=DESKTOP-8TA0413;Database=VS;Trusted_Connection=True;";
-
             services.AddRazorPages();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => 
@@ -40,7 +38,7 @@ namespace VirtualSchool
                     options.AccessDeniedPath = new PathString("/News");
                 });
             services.AddSignalR();
-            services.AddDbContext<VSContext>(options => options.UseSqlServer(connectionDb));
+            services.AddDbContext<VSContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
             services.AddTransient<IUserIdProvider, HubUserIdService>();
             services.AddTransient<DiaryService>();
             services.AddTransient<UserService>();

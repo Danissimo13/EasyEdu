@@ -37,10 +37,12 @@ namespace VirtualSchool.Pages
             else
             {
                 Profile = await userService.GetUserAsync(Id.Value);
-                if (Profile == null)
-                {
-                    return RedirectToPage("NotFound");
-                }
+            }
+
+            if (Profile == null)
+            {
+                await HttpContext.SignOutAsync();
+                return RedirectToPage("Index");
             }
 
             return Page();

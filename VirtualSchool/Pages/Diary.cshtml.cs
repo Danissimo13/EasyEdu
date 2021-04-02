@@ -29,7 +29,7 @@ namespace VirtualSchool.Pages
         {
             await db.Objects.LoadAsync();
             await db.Classes.LoadAsync();
-            await  db.DayObjects.LoadAsync();
+            await db.DayObjects.LoadAsync();
 
             User user = await db.Users.FirstOrDefaultAsync(u => u.UserId.ToString() == User.Identity.Name);
 
