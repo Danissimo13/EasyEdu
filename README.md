@@ -1,2 +1,2 @@
 # EasyEdu
-Virtual School
+Virtual School Hackaton
